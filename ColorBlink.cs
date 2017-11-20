@@ -5,22 +5,24 @@ using UnityEngine;
 public class ColorBlink : MonoBehaviour {  
     
     
-    public SpriteRenderer square;
-    Color32 tempColor = new Color32(255, 20, 20, 0);
-    bool fadeBool = false;
+    public SpriteRenderer square; //object to blink
+    Color32 tempColor = new Color32(255, 20, 20, 0); 
+    bool blinkBool = false;
 
-void MyFunction(){
     
-if (something happened) {
+void MyFunction() {
     
-    fadeBool = true;
+    if (true) {    //if something happened
+    blinkBool = true;
+    }
     
 }
     
-    IEnumerator CellFade() { 
+    
+    IEnumerator BlinkNow() { 
         
-        fadeBool = false;
-        Color32 firstColor = fadeSquare.color;
+        blinkBool = false;
+        Color32 firstColor = square.color;
         
         for (int i = 0; i < 20; i++) {
             square.color = tempColor;
@@ -34,15 +36,16 @@ if (something happened) {
             yield return new WaitForSeconds(0.03f);
         }   
         
-        fadeSquare.color = firstColor;
+        square.color = firstColor;
 
     }    
     
 
+    
     void Update() {
         
-        if (fadeBool) {
-            StartCoroutine(CellFade());
+        if (blinkBool) {
+            StartCoroutine(BlinkNow());
         }
         
     }
